@@ -18,7 +18,7 @@ public class LoginPage extends TestBase {
 
 	@FindBy(xpath = "//span[text()='Log In']")
 	WebElement login;
-	
+
 	@FindBy(xpath = "//div[text()='Login']")
 	WebElement loginBtn;
 
@@ -27,27 +27,28 @@ public class LoginPage extends TestBase {
 
 	@FindBy(xpath = "//image[@src='/images/cogtiny1.jpg']")
 	WebElement crmLogo;
-	
-	//Initializing the Page Objects
+
+	// Initializing the Page Objects
 	public LoginPage() {
 		PageFactory.initElements(driver, this);
 	}
-	
-	//Actions:
+
+	// Actions:
 	public String validateLoginPagetitle() {
 		return driver.getTitle();
 	}
-	
+
 	public boolean validateCRMlogo() {
 		return crmLogo.isDisplayed();
 	}
-	
+
 	public HomePage login(String mail, String pwd) {
 		login.click();
 		email.sendKeys(mail);
 		password.sendKeys(pwd);
 		loginBtn.click();
+
 		return new HomePage();
 	}
-		
+
 }
