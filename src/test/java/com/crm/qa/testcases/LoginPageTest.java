@@ -24,13 +24,13 @@ public class LoginPageTest extends TestBase {
 		loginPage = new LoginPage();
 	}
 
-	@Test(priority=1)
+	//@Test(priority=1)
 	public void loginPageTitleTest() {
 		String title = loginPage.validateLoginPagetitle();
 		Assert.assertEquals(title, "Free CRM #1 cloud software for any business large or small");
 	}
 	
-	@Test(priority=2)
+	//@Test(priority=2)
 	public void crmLogoImageTest() {
 		boolean flag = loginPage.validateCRMlogo();
 		Assert.assertTrue(flag);
@@ -38,11 +38,10 @@ public class LoginPageTest extends TestBase {
 	
 	@Test(priority=3)
 	public void loginTest() {
-		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
+		homePage = loginPage.login(prop.getProperty("email"), prop.getProperty("password"));
 		
 	}
-	
-	
+		
 
 	@AfterMethod
 	public void tearDown() {

@@ -8,21 +8,24 @@ import com.crm.qa.base.TestBase;
 
 public class LoginPage extends TestBase {
 
-	// PageFactory - Object Repo
+	// PageFactory - Object Repository
 
-	@FindBy(name = "username")
-	WebElement username;
+	@FindBy(name = "email")
+	WebElement email;
 
 	@FindBy(name = "password")
 	WebElement password;
 
 	@FindBy(xpath = "//span[text()='Log In']")
+	WebElement login;
+	
+	@FindBy(xpath = "//div[text()='Login']")
 	WebElement loginBtn;
 
 	@FindBy(xpath = "//button[contains(text(),'Sign Up')]")
 	WebElement signUpBtn;
 
-	@FindBy(xpath = "//img[cointains(@src,'cogtiny1')]")
+	@FindBy(xpath = "//image[@src='/images/cogtiny1.jpg']")
 	WebElement crmLogo;
 	
 	//Initializing the Page Objects
@@ -39,15 +42,12 @@ public class LoginPage extends TestBase {
 		return crmLogo.isDisplayed();
 	}
 	
-	public HomePage login(String un, String pwd) {
-		username.sendKeys(un);
+	public HomePage login(String mail, String pwd) {
+		login.click();
+		email.sendKeys(mail);
 		password.sendKeys(pwd);
 		loginBtn.click();
-		
 		return new HomePage();
 	}
-	
-	
-	
-	
+		
 }
