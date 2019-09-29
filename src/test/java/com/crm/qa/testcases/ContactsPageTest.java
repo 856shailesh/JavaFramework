@@ -10,46 +10,37 @@ import com.crm.qa.pages.ContactPages;
 import com.crm.qa.pages.HomePage;
 import com.crm.qa.pages.LoginPage;
 
-public class HomePageTest extends TestBase {
-
+public class ContactsPageTest extends TestBase {
+	
 	LoginPage loginPage;
 	HomePage homePage;
 	ContactPages contactsPage;
-	
-	public HomePageTest() {
+
+	public ContactsPageTest() {
 		super();
 	}
-	
-	//Every Test case should be independent
-	//Login and quit each time
 	
 	@BeforeMethod
 	public void SetUp() {
 		initialization();
 		contactsPage = new ContactPages();
-		loginPage = new LoginPage(); //Creating object so that we can access the loginPage Methods
+		loginPage = new LoginPage();
 		homePage = loginPage.login(prop.getProperty("email"), prop.getProperty("password")); //prop is coming by using the super , it will call the constructor of base class		
+		contactsPage = homePage.clickOnConatactsLink();
 	}
 	
 	@Test(priority=1)
-	public void verifyHomePageTitleTest() {
-		String homePageTitle = homePage.verifyHomePageTitle();
-		Assert.assertEquals(homePageTitle, "Cogmento CRM","Home Page title not matched");
+	public void verifyContactsPageLabel() {
+		Assert.assertTrue(contactsPage.verifyContactsLabel(), "Contatct Label Missing");
 	}
 	
-	@Test(priority=2)
-	public void verifyUserNameTest() {
-		Assert.assertTrue(homePage.verifyCorrectUserName()); 
-	}
-	
-	@Test(priority=3)
-	public void verifyContactsLinkTest() {
-		contactsPage = homePage.clickOnConatactsLink();
-	}
 	
 	
 	@AfterMethod
 	public void tearDown() {
 		driver.quit();
 	}
+
+
+
 }
