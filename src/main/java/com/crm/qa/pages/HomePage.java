@@ -1,6 +1,7 @@
 package com.crm.qa.pages;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -20,6 +21,9 @@ public class HomePage extends TestBase {
 	@FindBy(xpath = "//span[text()='Tasks']")
 	WebElement tasksLink;
 
+	@FindBy(xpath = "//i[@class='edit icon']")
+	WebElement NewContactLink;
+
 	// Initializing the Page Objects
 	public HomePage() {
 		PageFactory.initElements(driver, this);
@@ -28,7 +32,7 @@ public class HomePage extends TestBase {
 	public String verifyHomePageTitle() {
 		return driver.getTitle();
 	}
-	
+
 	public boolean verifyCorrectUserName() {
 		return userNameLabel.isDisplayed();
 	}
@@ -46,6 +50,10 @@ public class HomePage extends TestBase {
 	public TaskPage clickOntasksLink() {
 		tasksLink.click();
 		return new TaskPage();
+	}
+
+	public void clickonNewContactLink() {
+		NewContactLink.click();
 	}
 
 }

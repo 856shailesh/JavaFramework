@@ -34,6 +34,11 @@ public class ContactsPageTest extends TestBase {
 		Assert.assertTrue(contactsPage.verifyContactsLabel(), "Contatct Label Missing");
 	}
 	
+	@Test (priority=2)
+	public void validateCreateNewContact() {
+		homePage.clickOnConatactsLink();
+		contactsPage.createNewContactByName("Mohandas", "Gandhi");
+	}
 	
 	
 	@AfterMethod
